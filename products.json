@@ -1,18 +1,12 @@
-[
-  {
-    "name": "Soft Linen Kurti",
-    "price": 1450,
-    "image": "images/sample1.jpg",
-    "category": "Kurti",
-    "tag": "New Arrival",
-    "caption": "Elegant linen kurti for everyday wear."
-  },
-  {
-    "name": "Earthy Three Piece",
-    "price": 2650,
-    "image": "images/sample2.jpg",
-    "category": "Three Piece",
-    "tag": "Best Seller",
-    "caption": "Comfortable cotton three piece."
-  }
-]
+{
+  "products": [
+    {
+      "name": "Soft Linen Kurti",
+      "price": 1450,
+      "image": "images/sample1.jpg",
+      "category": "Kurti",
+      "tag": "New Arrival",
+      "caption": "Elegant linen kurti for everyday wear."
+    }
+  ]
+}

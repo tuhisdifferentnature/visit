@@ -38,7 +38,8 @@ document.getElementById('year').textContent = new Date().getFullYear();
 // Fetch and render products from JSON
 fetch('products.json')
   .then(response => response.json())
-  .then(products => {
+  .then(data => {
+    const products = data.products;
     const container = document.getElementById('shop-container');
     const categories = [...new Set(products.map(p => p.category))];
 
