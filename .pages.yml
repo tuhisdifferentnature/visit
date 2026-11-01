@@ -21,7 +21,7 @@ content:
         label: Category
         type: select
         options:
-          values: ["Kurti", "Three Piece", "Saree", "Accessories"]
+          values: ["Kurti", "Three Piece", "Saree", "Dress", "Accessories"]
       - name: tag
         label: Tag (e.g., New Arrival, Best Seller)
         type: string
