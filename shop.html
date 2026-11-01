@@ -6,14 +6,15 @@
 <title>Shop — Tuhi's Different Nature</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/header-fix.css">
-
 <link rel="icon" type="image/png" href="images/Aaabs.png">
-<link rel="apple-touch-icon" href="images/Aaabs.png">
 </head>
 <body>
 
 <header class="site-header">
-  <a href="index.html" class="logo"><img src="images/Aaabs.png" alt="Tuhi's Different Nature" style="height: 60px; width: auto; display: block;"><span>Tuhi's Different Nature</span></a>
+  <a href="index.html" class="logo">
+    <img src="images/Aaabs.png" alt="Tuhi's Different Nature" style="height: 60px; width: auto; display: block;">
+    <span>Tuhi's Different Nature</span>
+  </a>
   <nav>
     <a href="index.html">Home</a>
     <a href="shop.html">Shop</a>
@@ -22,80 +23,8 @@
   </nav>
 </header>
 
-<main class="shop">
-
-  <section class="section">
-    <h2 class="section-title">Kurti</h2>
-    <div class="grid">
-
-      <article class="product">
-        <div class="thumb"></div>
-        <h3>Soft Linen Kurti</h3>
-        <p class="price">৳ 1,450</p>
-        <a class="btn btn-small"
-           href="order.html?product=Soft%20Linen%20Kurti&price=1450">
-           Order Now
-        </a>
-      </article>
-
-      <article class="product">
-        <div class="thumb"></div>
-        <h3>Handwoven Cotton Kurti</h3>
-        <p class="price">৳ 1,850</p>
-        <a class="btn btn-small"
-           href="order.html?product=Handwoven%20Cotton%20Kurti&price=1850">
-           Order Now
-        </a>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Three Piece</h2>
-    <div class="grid">
-      <article class="product">
-        <div class="thumb"></div>
-        <h3>Earthy Three Piece</h3>
-        <p class="price">৳ 2,650</p>
-        <a class="btn btn-small"
-           href="order.html?product=Earthy%20Three%20Piece&price=2650">
-           Order Now
-        </a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Saree</h2>
-    <div class="grid">
-      <article class="product">
-        <div class="thumb"></div>
-        <h3>Jamdani Saree</h3>
-        <p class="price">৳ 3,200</p>
-        <a class="btn btn-small"
-           href="order.html?product=Jamdani%20Saree&price=3200">
-           Order Now
-        </a>
-      </article>
-    </div>
-  </section>
-
-  <section class="section">
-    <h2 class="section-title">Accessories</h2>
-    <div class="grid">
-      <article class="product">
-        <div class="thumb"></div>
-        <h3>Natural Bead Necklace</h3>
-        <p class="price">৳ 650</p>
-        <a class="btn btn-small"
-           href="order.html?product=Natural%20Bead%20Necklace&price=650">
-           Order Now
-        </a>
-      </article>
-    </div>
-  </section>
-
+<main class="shop" id="shop-container">
+  <!-- প্রোডাক্টগুলো এখানে জাভাস্ক্রিপ্ট দিয়ে লোড হবে -->
 </main>
 
 <footer class="site-footer">
@@ -103,6 +32,58 @@
   <p>Cash on Delivery available across Bangladesh.</p>
 </footer>
 
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+// Fetch and render products from JSON
+fetch('products.json')
+  .then(response => response.json())
+  .then(products => {
+    const container = document.getElementById('shop-container');
+    const categories = [...new Set(products.map(p => p.category))];
+
+    categories.forEach(category => {
+      const section = document.createElement('section');
+      section.className = 'section';
+      
+      const title = document.createElement('h2');
+      title.className = 'section-title';
+      title.textContent = category;
+      section.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'grid';
+
+      const filteredProducts = products.filter(p => p.category === category);
+
+      filteredProducts.forEach(product => {
+        const article = document.createElement('article');
+        article.className = 'product';
+        
+        const encodedName = encodeURIComponent(product.name);
+        const encodedPrice = encodeURIComponent(product.price);
+
+        article.innerHTML = `
+          <div style="position: relative;">
+            <img src="${product.image}" alt="${product.name}" style="width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: 4px; margin-bottom: 0.5rem; background: #eee8e0;">
+            ${product.tag ? `<span style="position: absolute; top: 10px; left: 10px; background: var(--accent); color: white; font-size: 0.7rem; padding: 4px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 0.5px;">${product.tag}</span>` : ''}
+          </div>
+          <h3>${product.name}</h3>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem; line-height: 1.4;">${product.caption || ''}</p>
+          <p class="price">৳ ${product.price}</p>
+          <a class="btn btn-small" href="order.html?product=${encodedName}&price=${encodedPrice}" style="text-align: center;">Order Now</a>
+        `;
+        grid.appendChild(article);
+      });
+
+      section.appendChild(grid);
+      container.appendChild(section);
+    });
+  })
+  .catch(error => {
+    document.getElementById('shop-container').innerHTML = '<p style="text-align:center; padding: 3rem;">Unable to load products. Please check back later.</p>';
+    console.error('Error loading products:', error);
+  });
+</script>
 </body>
 </html>

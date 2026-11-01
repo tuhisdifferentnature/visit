@@ -1,0 +1,30 @@
+media:
+  input: images
+  output: images
+
+content:
+  - name: products
+    label: Products
+    type: file
+    path: products.json
+    fields:
+      - name: name
+        label: Product Name
+        type: string
+      - name: price
+        label: Price (BDT)
+        type: number
+      - name: image
+        label: Product Image
+        type: image
+      - name: category
+        label: Category
+        type: select
+        options:
+          values: ["Kurti", "Three Piece", "Saree", "Accessories"]
+      - name: tag
+        label: Tag (e.g., New Arrival, Best Seller)
+        type: string
+      - name: caption
+        label: Short Caption / Description
+        type: string
