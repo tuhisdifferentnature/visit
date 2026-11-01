@@ -1,18 +1,8 @@
-[
-  {
-    "name": "Soft Linen Kurti",
-    "price": 1450,
-    "image": "images/sample1.jpg",
-    "category": "Kurti",
-    "tag": "New Arrival",
-    "caption": "Elegant linen kurti for everyday wear."
-  },
-  {
-    "name": "Earthy Three Piece",
-    "price": 2650,
-    "image": "images/sample2.jpg",
-    "category": "Three Piece",
-    "tag": "Best Seller",
-    "caption": "Comfortable cotton three piece."
-  }
-]
+{
+  "name": "Ruby Red Floral Dress",
+  "price": 2450,
+  "image": "images/young-woman-beautiful-red-dress_1303-17506.jpg",
+  "category": "Three Piece",
+  "tag": "Trending",
+  "caption": "Flowy red patterned maxi dress for a elegant look."
+}
