@@ -312,3 +312,54 @@ a { color: inherit; text-decoration: none; }
   .about-body .lead { font-size: 1.1rem; }
   .quote-block { padding: 1.5rem 1.25rem; }
 }
+
+/* --- Header Polish & Alignment Overrides --- */
+.site-header {
+  padding: 1.2rem 2rem;
+}
+
+.logo {
+  gap: 10px !important; /* লোগো ও টেক্সটের মাঝে নিখুঁত গ্যাপ */
+}
+
+.logo img {
+  height: 40px !important; /* লোগো সাইজটি পারফেক্ট করা হলো */
+}
+
+.logo span {
+  font-size: 1.2rem !important;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+/* নেভিগেশন লিংকগুলোকে flex-gap দিয়ে সাজানো হলো */
+.site-header nav {
+  display: flex;
+  gap: 2rem; 
+  align-items: center;
+}
+
+.site-header nav a {
+  margin-left: 0 !important; /* আগের মার্জিন রিমুভ করা হলো */
+  font-weight: 500;
+}
+
+/* --- Mobile Responsive Alignment --- */
+@media (max-width: 768px) {
+  .site-header {
+    flex-direction: column; /* মোবাইলে লোগো উপরে, মেনু নিচে */
+    padding: 1rem 1.25rem;
+    gap: 0.8rem;
+  }
+  .site-header nav {
+    width: 100%;
+    justify-content: center; /* মোবাইলে মেনু মাঝখানে থাকবে */
+    gap: 1.5rem;
+  }
+  .logo img {
+    height: 35px !important;
+  }
+  .logo span {
+    font-size: 1.1rem !important;
+  }
+}

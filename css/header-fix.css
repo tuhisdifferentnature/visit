@@ -1,0 +1,87 @@
+/* Force everything on one line */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  flex-wrap: nowrap; 
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+}
+
+.logo img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+.logo span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.site-header nav a {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Menu Hover Animation (Underline effect) */
+.site-header nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.site-header nav a:hover {
+  color: var(--accent);
+}
+
+.site-header nav a:hover::after {
+  width: 100%;
+}
+
+/* Mobile tweaks to keep it all on one line */
+@media (max-width: 768px) {
+  .site-header {
+    padding: 0.8rem 0.8rem;
+  }
+  .logo img {
+    height: 30px; /* মোবাইলে লোগো একটু ছোট হবে */
+  }
+  .logo span {
+    font-size: 0.9rem; /* মোবাইলে নাম ছোট হবে */
+  }
+  .site-header nav {
+    gap: 0.8rem; /* মোবাইলে মেনুর গ্যাপ কমবে */
+  }
+  .site-header nav a {
+    font-size: 0.8rem;
+  }
+}
